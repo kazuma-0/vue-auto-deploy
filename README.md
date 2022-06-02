@@ -1,24 +1,5 @@
-# vue-auto-deploy
+# Vue Auto Deploy
 
-## Project setup
-```
-yarn install
-```
+---
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+A sample vue project created for checking out GitHub workflows for VueJs apps
