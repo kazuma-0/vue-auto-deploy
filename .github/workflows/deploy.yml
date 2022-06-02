@@ -1,0 +1,31 @@
+name: Vue Build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy vue App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Create Node Env
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Packages
+        run: |
+          npm install -g @vue/cli
+          yarn install
+      - name: Build App
+        run: |
+          yarn build
+      - name: Deploy App
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: dist
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
