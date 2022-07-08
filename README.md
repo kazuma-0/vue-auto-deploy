@@ -2,4 +2,6 @@
 
 ---
 
-A sample vue project created for checking out GitHub workflows for VueJs apps
+A sample vue project to integrate CI/CD using github workflows.
+
+Automatically builds and publishes the app to gh-pages branch everytime a push is made.
