@@ -29,4 +29,3 @@ jobs:
           FOLDER: dist
           GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
 
-
