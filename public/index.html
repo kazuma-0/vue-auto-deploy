@@ -3,7 +3,7 @@
 <head>
     <link rel="icon" href="<%= BASE_URL %>chatai.png">
     <meta charset="UTF-8">
-    <title>单论对话：一问一答</title>
+    <title>Graph QABot</title>
     <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>
     <script src="<%= BASE_URL %>/d3.v5.min.js"></script>
     <style type="text/css">
@@ -329,7 +329,7 @@
                 }})
         }
 
-        //智能客服问题列表
+        //问题分类2问题列表
         function getQaList(){
             $.ajax({
                 //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
@@ -348,7 +348,7 @@
             })
         }
 
-        //智能投研问题列表
+        //问题分类1问题列表
         function getResearch(){
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
@@ -367,7 +367,7 @@
             })
         }
 
-        //基金运营问题列表
+        //问题分类3问题列表
         function getBusiness(){
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
@@ -386,7 +386,7 @@
             })
         }
 
-        //固收数据问题列表
+        //问题分类4问题列表
         function getFixed(){
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
@@ -937,10 +937,10 @@
     <div class="div2">
         <div id="divNavigation">
             <ul id="ulNavigation" class="navigationStyle">
-                <li onclick="getResearch()">智能投研</li>
-                <li onclick="getQaList()">智能客服</li>
-                <li onclick="getBusiness()">基金运营</li>
-                <li onclick="getFixed()">固收数据</li>
+                <li onclick="getResearch()">问题分类1</li>
+                <li onclick="getQaList()">问题分类2</li>
+                <li onclick="getBusiness()">问题分类3</li>
+                <li onclick="getFixed()">问题分类4</li>
             </ul>
         </div>
         <div style="margin-top: 70px">
