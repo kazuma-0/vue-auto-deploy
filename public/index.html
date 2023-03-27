@@ -9,7 +9,7 @@
     <style type="text/css">
         .div0{
             width: 1800px;
-            height: 900px;
+            height: 801px;
             position: absolute;
             top: 5%;
             left: 5%;
@@ -193,9 +193,6 @@
         .navigationStyle li:hover{
             color: blue;
         }
-        }
-
-
 
     </style>
     <script>
@@ -982,6 +979,14 @@
              width="800px"></svg>
     </div>
     <button type="button" onclick="answerType()" id="btnGraph" class="btnChat">>></button>
+
+    <div id="divgb" class="graph-database-http" style="display: grid;">
+        <input id="cql-http-text-input" type="text" maxlength="20" placeholder="ONgDB[Http]:localhost:7474" class="text-input">
+        <input id="cql-http-text-input-un" type="tel" maxlength="20" placeholder="username" class="text-input">
+        <input id="cql-http-text-input-pw" type="password" maxlength="20" placeholder="password" class="text-input">
+        <button class="http-url-commit-btn">save schema</button>
+    </div>
 </div>
+
 </body>
 </html>
