@@ -4,5 +4,5 @@ import jquery from 'jquery'
 import * as d3 from 'd3'
 
 createApp(App).mount('#app')
-Vue.prototype.$ = jquery
-Vue.prototype.d3 = d3
+createApp(App).prototype.$ = jquery
+createApp(App).prototype.d3 = d3
