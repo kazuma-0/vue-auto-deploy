@@ -4,8 +4,8 @@
     <link rel="icon" href="<%= BASE_URL %>chatai.png">
     <meta charset="UTF-8">
     <title>Graph QABot</title>
-    <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>
-    <script src="<%= BASE_URL %>/d3.v5.min.js"></script>
+<!--    <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>-->
+<!--    <script src="<%= BASE_URL %>js/d3.v5.min.js"></script>-->
     <style type="text/css">
         .div0{
             width: 1800px;
@@ -329,7 +329,7 @@
                 }})
         }
 
-        //问题分类2问题列表
+        //DEMO2问题列表
         function getQaList(){
             $.ajax({
                 //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
@@ -348,8 +348,9 @@
             })
         }
 
-        //问题分类1问题列表
+        //DEMO1问题列表
         function getResearch(){
+            console.log("Hello world!")
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
                 url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_research",
@@ -367,7 +368,7 @@
             })
         }
 
-        //问题分类3问题列表
+        //DEMO3问题列表
         function getBusiness(){
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
@@ -386,7 +387,7 @@
             })
         }
 
-        //问题分类4问题列表
+        //DEMO4问题列表
         function getFixed(){
             $.ajax({
                 // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
@@ -937,10 +938,10 @@
     <div class="div2">
         <div id="divNavigation">
             <ul id="ulNavigation" class="navigationStyle">
-                <li onclick="getResearch()">问题分类1</li>
-                <li onclick="getQaList()">问题分类2</li>
-                <li onclick="getBusiness()">问题分类3</li>
-                <li onclick="getFixed()">问题分类4</li>
+                <li onclick="getResearch()">DEMO1</li>
+                <li onclick="getQaList()">DEMO2</li>
+                <li onclick="getBusiness()">DEMO3</li>
+                <li onclick="getFixed()">DEMO4</li>
             </ul>
         </div>
         <div style="margin-top: 70px">
