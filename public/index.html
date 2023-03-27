@@ -6,6 +6,8 @@
     <title>Graph QABot</title>
     <script src="https://raw.githubusercontent.com/ongdb-contrib/graph-qabot/master/src/jquery-3.2.1.min.js"></script>
     <script src="https://raw.githubusercontent.com/ongdb-contrib/graph-qabot/master/src/d3.v5.min.js"></script>
+<!--    <script src="http://graph.jsfund.cn/ongdb/gdaas/js-ci/jquery-3.2.1.min.js"></script>-->
+<!--    <script src="http://graph.jsfund.cn/ongdb/gdaas/js-ci/d3.v5.min.js"></script>-->
     <style type="text/css">
         .div0{
             width: 1800px;
@@ -196,6 +198,7 @@
 
     </style>
     <script>
+        import $ from "jquery";
         $(function(){
             //获取左边问题列表
             getQaList();
@@ -981,7 +984,7 @@
     <button type="button" onclick="answerType()" id="btnGraph" class="btnChat">>></button>
 
     <div id="divgb" class="graph-database-http" style="display: grid;">
-        <input id="cql-http-text-input" type="text" maxlength="20" placeholder="HTTP/HTTPS,ip:port" class="text-input">
+        <input id="cql-http-text-input" type="text" maxlength="20" placeholder="http,https://ip:port" class="text-input">
         <input id="cql-http-text-input-un" type="tel" maxlength="20" placeholder="username" class="text-input">
         <input id="cql-http-text-input-pw" type="password" maxlength="20" placeholder="password" class="text-input">
         <button class="http-url-commit-btn">connect ongdb</button>
