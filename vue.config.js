@@ -4,7 +4,7 @@ module.exports = defineConfig({
     publicPath: "/graph-qabot/",
     configureWebpack: {
         externals: {
-            jquery: "jQuery"
+            jquery: "jquery"
         }
     }
 })
