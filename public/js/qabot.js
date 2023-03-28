@@ -25,6 +25,7 @@ function updateStorage() {
     localStorage.setItem(urlKey, httpUrl);
     localStorage.setItem(usernameKey, username);
     localStorage.setItem(passwordKey, password);
+    setStorage()
 }
 
 function isNull(nmaGrad3phValue) {
@@ -46,9 +47,6 @@ function setStorage(){
 $(function () {
     //获取左边问题列表
     getQaList();
-
-    //设置图数据库连接信息
-    setStorage()
 
     //从graph输入框提问
     $("#btn1").click(function () {
