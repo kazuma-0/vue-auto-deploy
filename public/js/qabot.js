@@ -31,9 +31,21 @@ function isNull(nmaGrad3phValue) {
     return nmaGrad3phValue === undefined || nmaGrad3phValue === null
 }
 
+function setStorage(){
+    const httpUrl = localStorage.getItem(urlKey);
+    const username = localStorage.getItem(usernameKey);
+    const password = localStorage.getItem(passwordKey);
+    document.getElementById('cql-http-text-input').innerHTML = httpUrl;
+    document.getElementById('cql-http-text-input-un').innerHTML = username;
+    document.getElementById('cql-http-text-input-pw').innerHTML = password;
+}
+
 $(function () {
     //获取左边问题列表
     getQaList();
+
+    //设置图数据库连接信息
+    setStorage()
 
     //从graph输入框提问
     $("#btn1").click(function () {
