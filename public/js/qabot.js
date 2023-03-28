@@ -25,23 +25,22 @@ function updateStorage() {
     localStorage.setItem(urlKey, httpUrl);
     localStorage.setItem(usernameKey, username);
     localStorage.setItem(passwordKey, password);
-    setStorage()
 }
 
 function isNull(nmaGrad3phValue) {
     return nmaGrad3phValue === undefined || nmaGrad3phValue === null
 }
 
+//设置默认连接
 function setStorage(){
     const httpUrl = localStorage.getItem(urlKey);
     const username = localStorage.getItem(usernameKey);
     const password = localStorage.getItem(passwordKey);
     console.log(httpUrl)
-    console.log(username)
     console.log(password)
     document.getElementById('cql-http-text-input').innerHTML = httpUrl;
     document.getElementById('cql-http-text-input-un').innerHTML = username;
-    document.getElementById('cql-http-text-input-pw').innerText = password;
+    document.getElementById('cql-http-text-input-pw').innerHTML = password;
 }
 
 $(function () {
