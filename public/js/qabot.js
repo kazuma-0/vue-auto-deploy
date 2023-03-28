@@ -39,8 +39,8 @@ function setStorage(){
     console.log(httpUrl)
     console.log(password)
     document.getElementById('cql-http-text-input').value = httpUrl;
-    document.getElementById('cql-http-text-input-un').value = username;
-    document.getElementById('cql-http-text-input-pw').value = password;
+    document.querySelector('cql-http-text-input-un').value = username;
+    document.querySelector('cql-http-text-input-pw').value = password;
 }
 
 function getUrl(){
