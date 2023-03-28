@@ -44,7 +44,7 @@ function setStorage(){
 }
 
 function getUrl(){
-    return document.getElementById('cql-http-text-input') + '/db/data/transaction/commit';
+    return localStorage.getItem(urlKey).trim() + '/db/data/transaction/commit';
 }
 
 $(function () {
