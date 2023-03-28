@@ -35,9 +35,12 @@ function setStorage(){
     const httpUrl = localStorage.getItem(urlKey);
     const username = localStorage.getItem(usernameKey);
     const password = localStorage.getItem(passwordKey);
+    console.log(httpUrl)
+    console.log(username)
+    console.log(password)
     document.getElementById('cql-http-text-input').innerHTML = httpUrl;
     document.getElementById('cql-http-text-input-un').innerHTML = username;
-    document.getElementById('cql-http-text-input-pw').innerHTML = password;
+    document.getElementById('cql-http-text-input-pw').innerText = password;
 }
 
 $(function () {
