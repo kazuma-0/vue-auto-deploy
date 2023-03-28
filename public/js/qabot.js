@@ -43,6 +43,10 @@ function setStorage(){
     document.getElementById('cql-http-text-input-pw').innerHTML = password;
 }
 
+function getUrl(){
+    return document.getElementById('cql-http-text-input') + '/db/data/transaction/commit';
+}
+
 $(function () {
     //获取左边问题列表
     getQaList();
@@ -82,7 +86,6 @@ $(function () {
 //获取推荐问题
 function getRecommend(val) {
     $.ajax({
-        //url: 'http://localhost:7424/ongdb/gdaas/qabot/single/recommend',
         url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/recommend',
         type: "POST",
         dataType: "JSON",
@@ -177,14 +180,24 @@ function getCypher(val) {
 //DEMO2问题列表
 function getQaList() {
     $.ajax({
-        //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_qa",
-        type: "GET",
+        url: getUrl(),
+        type: "POST",
         dataType: "JSON",
+        data: {
+            statements: [
+                {
+                    statement: "MATCH (n:DEMO2) RETURN n.name AS name LIMIT 10;",
+                    resultDataContents: [
+                        "row","graph"
+                    ]
+                }
+            ]
+        },
         success: function (result) {
             $('#ul1').html('');
-            $.each(result.list, function (index, item) {
-                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+            $.each(result.results[0].data, function (index, item) {
+                itemStr = item.row[0]
+                $('#ul1').append("<li onclick=liClick('" + itemStr + "')>" + itemStr + "</li>")
             })
         },
         error: function (result) {
