@@ -38,13 +38,13 @@ function setStorage(){
     const password = localStorage.getItem(passwordKey);
     console.log(httpUrl)
     console.log(password)
-    document.getElementById('cql-http-text-input').innerHTML = httpUrl;
-    document.getElementById('cql-http-text-input-un').innerHTML = username;
-    document.getElementById('cql-http-text-input-pw').innerHTML = password;
+    document.getElementById('cql-http-text-input').value = httpUrl;
+    document.getElementById('cql-http-text-input-un').value = username;
+    document.getElementById('cql-http-text-input-pw').value = password;
 }
 
 function getUrl(){
-    return localStorage.getItem(urlKey).trim() + '/db/data/transaction/commit';
+    return localStorage.getItem(urlKey).trim().value + '/db/data/transaction/commit';
 }
 
 $(function () {
@@ -186,7 +186,7 @@ function getQaList() {
         data: {
             statements: [
                 {
-                    statement: "MATCH (n:DEMO2) RETURN n.name AS name LIMIT 10;",
+                    statement: "MATCH (n:DEMO2) RETURN n.name AS name LIMIT 100;",
                     resultDataContents: [
                         "row","graph"
                     ]
