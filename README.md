@@ -1,11 +1,7 @@
-# graph-qabot
+# Vue Auto Deploy
 
-## API DOC
-- http://localhost:7424/qabot/swagger-ui.html
-- https://localhost:7425/qabot/swagger-ui.html
+---
 
-## PAGES
-- http://localhost:7424/qabot
-- https://localhost:7425/qabot
+A sample vue project to integrate CI/CD using github workflows.
 
-
+Automatically builds and publishes the app to gh-pages branch everytime a push is made.
