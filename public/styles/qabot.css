@@ -1,0 +1,211 @@
+
+.div0 {
+    width: 1800px;
+    height: 900px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.div1 {
+    width: 60px;
+    height: 800px;
+    border-style: ridge;
+    border-width: 1px;
+    background-color: #708090;
+    float: left;
+    display: none;
+}
+
+.div2 {
+    width: 300px;
+    height: 800px;
+    border-style: ridge;
+    border-width: 1px;
+    background-color: #DCDCDC;
+    float: left;
+    overflow-y: auto;
+}
+
+.div3 {
+    width: 650px;
+    height: 800px;
+    border-style: ridge;
+    border-width: 1px;
+    float: left;
+    margin-left: -1px;
+}
+
+.div4 {
+    width: 100%;
+    height: 600px;
+    border-style: ridge;
+    border-width: 1px;
+    margin-top: -1px;
+    overflow-y: auto;
+}
+
+.div5 {
+    width: 100%;
+    height: 200px;
+    border-style: ridge;
+    border-width: 1px;
+    margin-top: -1px;
+}
+
+.div6 {
+    width: 800px;
+    height: 800px;
+    float: left;
+    border-style: ridge;
+    border-width: 1px;
+    margin-left: -1px;
+<!-- display: none;
+-->
+}
+
+.textrea {
+    width: 635px;
+    height: 110px;
+    /* 去除边框 */
+    border: none;
+    resize: none;
+    /* 去除选中后的边框 */
+    outline: none;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #808080
+}
+
+.btn {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.cbtnchat {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.btnChat {
+    /* 去除边框 */
+    border: none;
+    resize: none;
+    float: left;
+    margin-left: -1px;
+    margin-top: 400px;
+}
+
+.chat_right_content {
+    float: right;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 40px;
+    border-top-right-radius: 0px;
+    background-color: #4F7cff;
+    color: white;
+}
+
+.chat_left_content {
+    float: left;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 40px;
+    border-top-left-radius: 0px;
+    background-color: #4F7cff;
+    color: white;
+}
+
+.chat_item {
+    width: 50px;
+    height: 50px;
+    background-color: #4459AB;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    border-radius: 25px;
+}
+
+.chat_right_item_1 {
+    width: 50px;
+    height: 50px;
+    background-color: #4459AB;
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    border-radius: 25px;
+}
+
+.chat_letf_item_GPT {
+    width: 50px;
+    height: 50px;
+    background-color: #4459AB;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    border-radius: 25px;
+    font-size: 10px;
+}
+
+.chat_left_item_1 {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.file-selector-button {
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    padding: 8px 12px;
+    background-color: #D3D3D3;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #D3D3D3;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0;
+}
+
+.ulstyle li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+.ulstyle li:hover {
+    color: blue;
+}
+
+.navigationStyle li {
+    float: left;
+    list-style-type: none;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.navigationStyle li:hover {
+    color: blue;
+}
+
