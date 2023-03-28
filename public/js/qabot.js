@@ -9,6 +9,7 @@ const passwordValue = '123456'
 
 //更新缓存
 function updateStorage() {
+    console.log('update storage')
     let httpUrl = document.getElementById('cql-http-text-input').value;
     let username = document.getElementById('cql-http-text-input-un').value;
     let password = document.getElementById('cql-http-text-input-pw').value;
