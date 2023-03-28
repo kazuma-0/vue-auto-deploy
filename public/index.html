@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <!-- jsDelivr CDN non-minified -->
+    <script src="https://cdn.jsdelivr.net/npm/neo4j-driver"></script>
     <link rel="icon" type="image/png" href="<%= BASE_URL %>image/chatai.png"/>
     <meta charset="UTF-8">
     <title>Graph QABot</title>
@@ -9,9 +11,14 @@
     <script src="<%= BASE_URL %>js/qabot.js"></script>
     <link type="text/css" rel="stylesheet" href="<%= BASE_URL %>css/qabot.css"/>
 
-    <script>
-        setStorage()
-    </script>
+<!--    <link rel="icon" type="image/png" href="image/chatai.png"/>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Graph QABot</title>-->
+<!--    <script src="js/jquery-3.2.1.min.js"></script>-->
+<!--    <script src="js/d3.v5.min.js"></script>-->
+<!--    <script src="js/qabot.js"></script>-->
+<!--    <link type="text/css" rel="stylesheet" href="css/qabot.css"/>-->
+
 </head>
 <body>
 <!--标记问题回答方式-->
@@ -66,15 +73,18 @@
     <button type="button" onclick="answerType()" id="btnGraph" class="btnChat">>></button>
 
     <div id="divgb" class="graph-database-http" style="display: grid;">
-        <input id="cql-http-text-input" maxlength="100" placeholder="http,https://ip:port"
+        <input id="cql-http-text-input" maxlength="100" placeholder="请输入bolt协议的IP和PORT"
                class="text-input">
         <input
-            id="cql-http-text-input-un" type="tel" maxlength="50" placeholder="username" class="text-input">
+            id="cql-http-text-input-un" type="tel" maxlength="50" placeholder="请输入用户名" class="text-input">
         <input
-            id="cql-http-text-input-pw" type="password" maxlength="50" placeholder="password" class="text-input">
+            id="cql-http-text-input-pw" type="password" maxlength="50" placeholder="请输入密码" class="text-input">
         <button class="http-url-commit-btn" type="button" onclick="updateStorage()">connect ongdb</button>
     </div>
 
 </div>
+<script>
+    setStorage()
+</script>
 </body>
 </html>

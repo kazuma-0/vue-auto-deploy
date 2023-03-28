@@ -1,5 +1,5 @@
 const urlKey = 'qabot.ongdb.url'
-const urlValue = 'http://localhost:7474'
+const urlValue = 'localhost:7687'
 
 const usernameKey = 'qabot.ongdb.username'
 const usernameValue = 'ongdb'
@@ -7,9 +7,13 @@ const usernameValue = 'ongdb'
 const passwordKey = 'qabot.ongdb.password'
 const passwordValue = '123456'
 
+let driver = neo4j.driver(
+    'bolt://'+localStorage.getItem(urlKey),
+    neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
+)
+
 //更新缓存
 function updateStorage() {
-    console.log('update storage')
     let httpUrl = document.getElementById('cql-http-text-input').value;
     let username = document.getElementById('cql-http-text-input-un').value;
     let password = document.getElementById('cql-http-text-input-pw').value;
@@ -25,6 +29,11 @@ function updateStorage() {
     localStorage.setItem(urlKey, httpUrl);
     localStorage.setItem(usernameKey, username);
     localStorage.setItem(passwordKey, password);
+    driver = neo4j.driver(
+        'bolt://'+localStorage.getItem(urlKey),
+        neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
+    )
+    console.log(driver)
 }
 
 function isNull(nmaGrad3phValue) {
@@ -36,15 +45,13 @@ function setStorage(){
     const httpUrl = localStorage.getItem(urlKey);
     const username = localStorage.getItem(usernameKey);
     const password = localStorage.getItem(passwordKey);
-    console.log(httpUrl)
-    console.log(password)
-    document.getElementById('cql-http-text-input').value = httpUrl;
-    document.querySelector('cql-http-text-input-un').value = username;
-    document.querySelector('cql-http-text-input-pw').value = password;
+    document.querySelector('#cql-http-text-input').value = httpUrl;
+    document.querySelector('#cql-http-text-input-un').value = username;
+    document.querySelector('#cql-http-text-input-pw').value = password;
 }
 
 function getUrl(){
-    return localStorage.getItem(urlKey).trim().value + '/db/data/transaction/commit';
+    return localStorage.getItem(urlKey).trim().toString() + '/db/data/transaction/commit';
 }
 
 $(function () {
@@ -123,10 +130,10 @@ function getfunqabot(val) {
             if (result.type === 'kg_chat') {
                 //查询并绘制关系图谱
                 getfunqabotgrqph(val);
-                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_left_item_1'><img src='<%= BASE_URL %>image/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
             } else {
                 d3.select('svg').selectAll('*').remove();
-                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuest('" + val + "')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuest('" + val + "')><div class='chat_left_item_1'><img src='<%= BASE_URL %>image/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
             }
             showdiv.scrollTop = showdiv.scrollHeight;
             //获取cypher
@@ -179,88 +186,78 @@ function getCypher(val) {
 
 //DEMO2问题列表
 function getQaList() {
-    $.ajax({
-        url: getUrl(),
-        type: "POST",
-        dataType: "JSON",
-        data: {
-            statements: [
-                {
-                    statement: "MATCH (n:DEMO2) RETURN n.name AS name LIMIT 100;",
-                    resultDataContents: [
-                        "row","graph"
-                    ]
-                }
-            ]
-        },
-        success: function (result) {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO2) RETURN n.name AS name LIMIT 100;', {
+        })
+        .then(function(result) {
             $('#ul1').html('');
-            $.each(result.results[0].data, function (index, item) {
-                itemStr = item.row[0]
-                $('#ul1').append("<li onclick=liClick('" + itemStr + "')>" + itemStr + "</li>")
+            result.records.forEach(function(record) {
+                item = record.get('name')
+                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
-        },
-        error: function (result) {
-            alert(result);
-        }
-    })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
 }
 
 //DEMO1问题列表
 function getResearch() {
-    $.ajax({
-        // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_research",
-        type: "GET",
-        dataType: "JSON",
-        success: function (result) {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO1) RETURN n.name AS name LIMIT 100;', {
+        })
+        .then(function(result) {
             $('#ul1').html('');
-            $.each(result.list, function (index, item) {
+            result.records.forEach(function(record) {
+                item = record.get('name')
                 $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
-        },
-        error: function (result) {
-            alert(result);
-        }
-    })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
 }
 
 //DEMO3问题列表
 function getBusiness() {
-    $.ajax({
-        // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_business",
-        type: "GET",
-        dataType: "JSON",
-        success: function (result) {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO3) RETURN n.name AS name LIMIT 100;', {
+        })
+        .then(function(result) {
             $('#ul1').html('');
-            $.each(result.list, function (index, item) {
+            result.records.forEach(function(record) {
+                item = record.get('name')
                 $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
-        },
-        error: function (result) {
-            alert(result);
-        }
-    })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
 }
 
 //DEMO4问题列表
 function getFixed() {
-    $.ajax({
-        // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_fixed",
-        type: "GET",
-        dataType: "JSON",
-        success: function (result) {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO4) RETURN n.name AS name LIMIT 100;', {
+        })
+        .then(function(result) {
             $('#ul1').html('');
-            $.each(result.list, function (index, item) {
+            result.records.forEach(function(record) {
+                item = record.get('name')
                 $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
-        },
-        error: function (result) {
-            alert(result);
-        }
-    })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
 }
 
 //点击左边列表提问
