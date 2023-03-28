@@ -7,601 +7,629 @@
     <script src="<%= BASE_URL %>jquery-3.2.1.min.js"></script>
     <script src="<%= BASE_URL %>d3.v5.min.js"></script>
     <style type="text/css">
-        .div0{
-          width: 1800px;
-          height: 900px;
-          position: absolute;
-          top: 5%;
-          left: 5%;
+        .div0 {
+            width: 1800px;
+            height: 900px;
+            position: absolute;
+            top: 5%;
+            left: 5%;
         }
-        .div1{
-          width: 60px;
-          height: 800px;
-          border-style: ridge;
-          border-width: 1px;
-          background-color: #708090;
-          float: left;
-          display: none;
-        }
-        .div2{
-          width: 300px;
-          height: 800px;
-          border-style: ridge;
-          border-width: 1px;
-          background-color: #DCDCDC;
-          float: left;
-          overflow-y:auto;
-        }
-        .div3{
-          width: 650px;
-          height: 800px;
-          border-style: ridge;
-          border-width: 1px;
-          float: left;
-          margin-left: -1px;
-        }
-        .div4{
-          width: 100%;
-          height: 600px;
-          border-style: ridge;
-          border-width: 1px;
-          margin-top: -1px;
-          overflow-y:auto;
-        }
-        .div5{
-          width: 100%;
-          height: 200px;
-          border-style: ridge;
-          border-width: 1px;
-          margin-top: -1px;
-        }
-        .div6 {
-          width: 800px;
-          height: 800px;
-          float: left;
-          border-style: ridge;
-          border-width: 1px;
-          margin-left: -1px;
-<!--          display: none;-->
-        }
-        .textrea{
-          width: 635px;
-          height: 110px;
-          /* 去除边框 */
-          border: none;
-          resize: none;
-          /* 去除选中后的边框 */
-          outline:none;
-          margin-top: 10px;
-          margin-left: 10px;
-          color: #808080
-        }
-        .btn {
-          float: right;
-          margin-right: 20px;
-          margin-bottom: 20px;
-          margin-top: 30px;
-        }
-        .cbtnchat{
-          float: right;
-          margin-right: 20px;
-          margin-bottom: 20px;
-        }
-        .btnChat{
-         /* 去除边框 */
-          border: none;
-          resize: none;
-          float: left;
-          margin-left:-1px;
-          margin-top: 400px;
-        }
-        .chat_right_content{
-        float: right;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 40px;
-        border-top-right-radius: 0px;
-        background-color: #4F7cff;
-        color: white;
-        }
-        .chat_left_content{
-        float: left;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 40px;
-        border-top-left-radius: 0px;
-        background-color: #4F7cff;
-        color: white;
-        }
-        .chat_item{
-        width: 50px;
-        height: 50px;
-        background-color: #4459AB;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        text-align: center;
-        line-height: 50px;
-        color: white;
-        border-radius: 25px;
-        }
-        .chat_right_item_1{
-        width: 50px;
-        height: 50px;
-        background-color: #4459AB;
-        float: right;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        text-align: center;
-        line-height: 50px;
-        color: white;
-        border-radius: 25px;
-        }
-        .chat_letf_item_GPT{
-        width: 50px;
-        height: 50px;
-        background-color: #4459AB;
-        float: left;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        text-align: center;
-        line-height: 50px;
-        color: white;
-        border-radius: 25px;
-        font-size: 10px;
-        }
-        .chat_left_item_1{
-        float: left;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        }
-    .file-selector-button{
-       border-radius: 5px;
-       border: 1px solid #D3D3D3;
-       padding: 8px 12px;
-       background-color: #D3D3D3;
-       cursor: pointer;
-       font-size:0;
-    }
-    .fileUpload {
-      position: relative;
-      overflow: hidden;
-      margin: 10px;
-      background-color: #D3D3D3;
-      border: 1px solid #D3D3D3;
-      border-radius: 5px;
-      padding: 6px 12px;
-      font-size:0;
-    }
-    .ulstyle li{
-      margin-bottom: 10px;
-      list-style-type: none;
-      margin-right: 10px;
-    }
-    .ulstyle li:hover{
-      color: blue;
-    }
-    .navigationStyle li{
-       float: left;
-       list-style-type: none;
-       margin-left: 5px;
-       font-weight: bold;
-    }
-    .navigationStyle li:hover{
-      color: blue;
-    }
-}
 
+        .div1 {
+            width: 60px;
+            height: 800px;
+            border-style: ridge;
+            border-width: 1px;
+            background-color: #708090;
+            float: left;
+            display: none;
+        }
+
+        .div2 {
+            width: 300px;
+            height: 800px;
+            border-style: ridge;
+            border-width: 1px;
+            background-color: #DCDCDC;
+            float: left;
+            overflow-y: auto;
+        }
+
+        .div3 {
+            width: 650px;
+            height: 800px;
+            border-style: ridge;
+            border-width: 1px;
+            float: left;
+            margin-left: -1px;
+        }
+
+        .div4 {
+            width: 100%;
+            height: 600px;
+            border-style: ridge;
+            border-width: 1px;
+            margin-top: -1px;
+            overflow-y: auto;
+        }
+
+        .div5 {
+            width: 100%;
+            height: 200px;
+            border-style: ridge;
+            border-width: 1px;
+            margin-top: -1px;
+        }
+
+        .div6 {
+            width: 800px;
+            height: 800px;
+            float: left;
+            border-style: ridge;
+            border-width: 1px;
+            margin-left: -1px;
+        <!-- display: none;
+        -->
+        }
+
+        .textrea {
+            width: 635px;
+            height: 110px;
+            /* 去除边框 */
+            border: none;
+            resize: none;
+            /* 去除选中后的边框 */
+            outline: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #808080
+        }
+
+        .btn {
+            float: right;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .cbtnchat {
+            float: right;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btnChat {
+            /* 去除边框 */
+            border: none;
+            resize: none;
+            float: left;
+            margin-left: -1px;
+            margin-top: 400px;
+        }
+
+        .chat_right_content {
+            float: right;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-top-right-radius: 0px;
+            background-color: #4F7cff;
+            color: white;
+        }
+
+        .chat_left_content {
+            float: left;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-top-left-radius: 0px;
+            background-color: #4F7cff;
+            color: white;
+        }
+
+        .chat_item {
+            width: 50px;
+            height: 50px;
+            background-color: #4459AB;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .chat_right_item_1 {
+            width: 50px;
+            height: 50px;
+            background-color: #4459AB;
+            float: right;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .chat_letf_item_GPT {
+            width: 50px;
+            height: 50px;
+            background-color: #4459AB;
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            border-radius: 25px;
+            font-size: 10px;
+        }
+
+        .chat_left_item_1 {
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .file-selector-button {
+            border-radius: 5px;
+            border: 1px solid #D3D3D3;
+            padding: 8px 12px;
+            background-color: #D3D3D3;
+            cursor: pointer;
+            font-size: 0;
+        }
+
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            background-color: #D3D3D3;
+            border: 1px solid #D3D3D3;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 0;
+        }
+
+        .ulstyle li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            margin-right: 10px;
+        }
+
+        .ulstyle li:hover {
+            color: blue;
+        }
+
+        .navigationStyle li {
+            float: left;
+            list-style-type: none;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .navigationStyle li:hover {
+            color: blue;
+        }
+
+        }
 
 
     </style>
     <script>
-        $(function(){
-           //获取左边问题列表
-           getQaList();
+        $(function () {
+            //获取左边问题列表
+            getQaList();
 
-          //从graph输入框提问
-          $("#btn1").click(function(){
-             //获取输入框内容
-             var txt = document.getElementById('input_area').value;
-             if(txt.length>0){
-               var showdiv = document.getElementById('show_div');
-               showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+txt+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-               document.getElementById('input_area').value = '';
-               showdiv.scrollTop = showdiv.scrollHeight;
-               //调graph接口回答问题
-               getfunqabot(txt);
-             }
+            //从graph输入框提问
+            $("#btn1").click(function () {
+                //获取输入框内容
+                var txt = document.getElementById('input_area').value;
+                if (txt.length > 0) {
+                    var showdiv = document.getElementById('show_div');
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + txt + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    document.getElementById('input_area').value = '';
+                    showdiv.scrollTop = showdiv.scrollHeight;
+                    //调graph接口回答问题
+                    getfunqabot(txt);
+                }
 
-             //获取推荐问题列表
-              getRecommend(txt);
-          })
+                //获取推荐问题列表
+                getRecommend(txt);
+            })
 
-          //从chatGpt输入框提问
-          $("#btnChat").click(function(){
-             //获取输入框内容
-             var txt = document.getElementById('chat_input_area').value;
-             if(txt.length>0){
-               var showdiv = document.getElementById('chat_div');
-               showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+txt+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-               document.getElementById('chat_input_area').value = '';
-               showdiv.scrollTop = showdiv.scrollHeight;
-               //调chatGpt接口回答问题
-               getChatGPTfunqabot(txt);
-             }
-          })
+            //从chatGpt输入框提问
+            $("#btnChat").click(function () {
+                //获取输入框内容
+                var txt = document.getElementById('chat_input_area').value;
+                if (txt.length > 0) {
+                    var showdiv = document.getElementById('chat_div');
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + txt + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    document.getElementById('chat_input_area').value = '';
+                    showdiv.scrollTop = showdiv.scrollHeight;
+                    //调chatGpt接口回答问题
+                    getChatGPTfunqabot(txt);
+                }
+            })
         })
 
         //获取推荐问题
-        function getRecommend(val){
-           $.ajax({
-            //url: 'http://localhost:7424/ongdb/gdaas/qabot/single/recommend',
-            url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/recommend',
-            type : "POST",
-            dataType: "JSON",
-            data: {
-                question: val
-            },
-            success:function(result) {
-               console.log(result);
-               var txt = '';
-               $.each(result.list,function(index, value){
-                 txt+=value+'\n';
-               })
-               $('#input_area').val(txt);
-            },
-			error:function(result) {
-			    alert(result);
-			}
-     	  });
+        function getRecommend(val) {
+            $.ajax({
+                //url: 'http://localhost:7424/ongdb/gdaas/qabot/single/recommend',
+                url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/recommend',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    question: val
+                },
+                success: function (result) {
+                    console.log(result);
+                    var txt = '';
+                    $.each(result.list, function (index, value) {
+                        txt += value + '\n';
+                    })
+                    $('#input_area').val(txt);
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
         }
 
         //调graph接口回答问题
-        function getfunqabot(val){
-          $.ajax({
-            url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session',
-            type : "POST",
-            dataType: "JSON",
-            data: {
-                qa: val
-            },
-            success:function(result) {
-               var showTxt = "【问题】："+val;
-               showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
-               showTxt += result.data;
-               var showdiv = document.getElementById('show_div');
-               if(result.type === 'kg_chat'){
-                 //查询并绘制关系图谱
-                 getfunqabotgrqph(val);
-                 showdiv.innerHTML = showdiv.innerHTML+"<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('"+val+"')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>"+showTxt+"</div></div>";
-               }else{
-                 d3.select('svg').selectAll('*').remove();
-                 showdiv.innerHTML = showdiv.innerHTML+"<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuest('"+val+"')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>"+showTxt+"</div></div>";
-               }
-               showdiv.scrollTop = showdiv.scrollHeight;
-               //获取cypher
-               getCypher(val);
-            },
-			error:function(result) {
-			    alert(result);
-			}
-     	  });
+        function getfunqabot(val) {
+            $.ajax({
+                url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    qa: val
+                },
+                success: function (result) {
+                    var showTxt = "【问题】：" + val;
+                    showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
+                    showTxt += result.data;
+                    var showdiv = document.getElementById('show_div');
+                    if (result.type === 'kg_chat') {
+                        //查询并绘制关系图谱
+                        getfunqabotgrqph(val);
+                        showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                    } else {
+                        d3.select('svg').selectAll('*').remove();
+                        showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuest('" + val + "')><div class='chat_left_item_1'><img src='../gdaas/images/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                    }
+                    showdiv.scrollTop = showdiv.scrollHeight;
+                    //获取cypher
+                    getCypher(val);
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
         }
 
         //调chatGpt接口回答问题
-        function getChatGPTfunqabot(val){
-          $.ajax({
-            url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/chatGpt',
-            type : "POST",
-            dataType: "JSON",
-            data: {
-                qa: val
-            },
-            success:function(result) {
-              console.log(result);
-               var showTxt = "【问题】："+val;
-               showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
-               showTxt += result.data;
-               var showdiv = document.getElementById('chat_div');
-               showdiv.innerHTML = showdiv.innerHTML+"<div style='float: left; display: flex; margin-top: 20px; width: 550px;'><div class='chat_letf_item_GPT'>ChatGPT</div><div class='chat_left_content'>"+showTxt+"</div></div>";
-               showdiv.scrollTop = showdiv.scrollHeight;
-            },
-			error:function(result) {
-			    alert(result);
-			}
-     	  });
+        function getChatGPTfunqabot(val) {
+            $.ajax({
+                url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/chatGpt',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    qa: val
+                },
+                success: function (result) {
+                    console.log(result);
+                    var showTxt = "【问题】：" + val;
+                    showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
+                    showTxt += result.data;
+                    var showdiv = document.getElementById('chat_div');
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;'><div class='chat_letf_item_GPT'>ChatGPT</div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                    showdiv.scrollTop = showdiv.scrollHeight;
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
         }
 
         //查询cypher
         function getCypher(val) {
             $.ajax({
                 url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/cypher",
-                type : "POST",
+                type: "POST",
                 dataType: "JSON",
                 data: {
                     qa: val
                 },
-                success:function(result) {
+                success: function (result) {
                     $('#code1').html(result.cypher);
-                }})
+                }
+            })
         }
 
         //DEMO2问题列表
-        function getQaList(){
-          $.ajax({
-            //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
-            url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_qa",
-            type: "GET",
-            dataType: "JSON",
-            success:function(result) {
-              $('#ul1').html('');
-              $.each(result.list,function(index,item){
-                 $('#ul1').append("<li onclick=liClick('"+item+"')>"+item+"</li>")
-              })
-            },
-			error:function(result) {
-			    alert(result);
-			}
-          })
+        function getQaList() {
+            $.ajax({
+                //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
+                url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_qa",
+                type: "GET",
+                dataType: "JSON",
+                success: function (result) {
+                    $('#ul1').html('');
+                    $.each(result.list, function (index, item) {
+                        $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+                    })
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
         }
 
         //DEMO1问题列表
-        function getResearch(){
-          $.ajax({
-            // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
-            url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_research",
-            type: "GET",
-            dataType: "JSON",
-            success:function(result) {
-              $('#ul1').html('');
-              $.each(result.list,function(index,item){
-                 $('#ul1').append("<li onclick=liClick('"+item+"')>"+item+"</li>")
-              })
-            },
-			error:function(result) {
-			    alert(result);
-			}
-          })
+        function getResearch() {
+            $.ajax({
+                // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
+                url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_research",
+                type: "GET",
+                dataType: "JSON",
+                success: function (result) {
+                    $('#ul1').html('');
+                    $.each(result.list, function (index, item) {
+                        $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+                    })
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
         }
 
         //DEMO3问题列表
-        function getBusiness(){
-          $.ajax({
-            // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
-            url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_business",
-            type: "GET",
-            dataType: "JSON",
-            success:function(result) {
-              $('#ul1').html('');
-              $.each(result.list,function(index,item){
-                 $('#ul1').append("<li onclick=liClick('"+item+"')>"+item+"</li>")
-              })
-            },
-			error:function(result) {
-			    alert(result);
-			}
-          })
+        function getBusiness() {
+            $.ajax({
+                // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
+                url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_business",
+                type: "GET",
+                dataType: "JSON",
+                success: function (result) {
+                    $('#ul1').html('');
+                    $.each(result.list, function (index, item) {
+                        $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+                    })
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
         }
 
         //DEMO4问题列表
-        function getFixed(){
-          $.ajax({
-            // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
-            url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_fixed",
-            type: "GET",
-            dataType: "JSON",
-            success:function(result) {
-              $('#ul1').html('');
-              $.each(result.list,function(index,item){
-                 $('#ul1').append("<li onclick=liClick('"+item+"')>"+item+"</li>")
-              })
-            },
-			error:function(result) {
-			    alert(result);
-			}
-          })
+        function getFixed() {
+            $.ajax({
+                // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
+                url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/demo_fixed",
+                type: "GET",
+                dataType: "JSON",
+                success: function (result) {
+                    $('#ul1').html('');
+                    $.each(result.list, function (index, item) {
+                        $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+                    })
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
         }
 
         //点击左边列表提问
-        function liClick(val){
-          if($('#answerId').val()==0){
-            var showdiv = document.getElementById('show_div');
-            if(val.indexOf("？")>=0){
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("？")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调接口回答问题
-              getfunqabot(val.substring(0,val.indexOf("？")+1));
-            }else if(val.indexOf("?")>=0){
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("?")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调接口回答问题
-              getfunqabot(val.substring(0,val.indexOf("?")+1));
-            }else{
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调接口回答问题
-              getfunqabot(val);
+        function liClick(val) {
+            if ($('#answerId').val() == 0) {
+                var showdiv = document.getElementById('show_div');
+                if (val.indexOf("？") >= 0) {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("？") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调接口回答问题
+                    getfunqabot(val.substring(0, val.indexOf("？") + 1));
+                } else if (val.indexOf("?") >= 0) {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("?") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调接口回答问题
+                    getfunqabot(val.substring(0, val.indexOf("?") + 1));
+                } else {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调接口回答问题
+                    getfunqabot(val);
+                }
+                showdiv.scrollTop = showdiv.scrollHeight;
+            } else {
+                var showdiv = document.getElementById('show_div');
+                var chatdiv = document.getElementById('chat_div');
+                if (val.indexOf("？") >= 0) {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("？") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调graph接口回答问题
+                    getfunqabot(val.substring(0, val.indexOf("？") + 1));
+
+                    chatdiv.innerHTML = chatdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("？") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调ChatGPT接口回答问题
+                    getChatGPTfunqabot(val.substring(0, val.indexOf("？") + 1))
+
+                } else if (val.indexOf("?") >= 0) {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("?") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调接口回答问题
+                    getfunqabot(val.substring(0, val.indexOf("?") + 1));
+
+                    chatdiv.innerHTML = chatdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val.substring(0, val.indexOf("?") + 1) + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调ChatGPT接口回答问题
+                    getChatGPTfunqabot(val.substring(0, val.indexOf("?") + 1))
+
+                } else {
+                    showdiv.innerHTML = showdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调接口回答问题
+                    getfunqabot(val);
+
+                    chatdiv.innerHTML = chatdiv.innerHTML + "<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>" + val + "</div>" + "<div class='chat_right_item_1'>me</div></div>";
+                    //调ChatGPT接口回答问题
+                    getChatGPTfunqabot(val);
+                }
+                showdiv.scrollTop = showdiv.scrollHeight;
+                chatdiv.scrollTop = chatdiv.scrollHeight;
             }
-            showdiv.scrollTop = showdiv.scrollHeight;
-          }else{
-            var showdiv = document.getElementById('show_div');
-            var chatdiv = document.getElementById('chat_div');
-            if(val.indexOf("？")>=0){
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("？")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调graph接口回答问题
-              getfunqabot(val.substring(0,val.indexOf("？")+1));
-
-              chatdiv.innerHTML = chatdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("？")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调ChatGPT接口回答问题
-              getChatGPTfunqabot(val.substring(0,val.indexOf("？")+1))
-
-            }else if(val.indexOf("?")>=0){
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("?")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调接口回答问题
-              getfunqabot(val.substring(0,val.indexOf("?")+1));
-
-              chatdiv.innerHTML = chatdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val.substring(0,val.indexOf("?")+1)+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调ChatGPT接口回答问题
-              getChatGPTfunqabot(val.substring(0,val.indexOf("?")+1))
-
-            }else{
-              showdiv.innerHTML = showdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调接口回答问题
-              getfunqabot(val);
-
-              chatdiv.innerHTML = chatdiv.innerHTML+"<div style='float: right; display: flex; margin-top: 20px; margin-left: 100px;'><div class='chat_right_content'>"+val+"</div>"+"<div class='chat_right_item_1'>me</div></div>";
-              //调ChatGPT接口回答问题
-              getChatGPTfunqabot(val);
-            }
-            showdiv.scrollTop = showdiv.scrollHeight;
-            chatdiv.scrollTop = chatdiv.scrollHeight;
-          }
         }
 
         //点击聊天窗口答案显示对应的图谱和cypher
-        function btnWinQuestgraph(val){
-          //获取cypher
-          getCypher(val)
-          //获取图谱
-          getfunqabotgrqph(val)
+        function btnWinQuestgraph(val) {
+            //获取cypher
+            getCypher(val)
+            //获取图谱
+            getfunqabotgrqph(val)
         }
 
-        function btnWinQuest(val){
-          //获取cypher
-          getCypher(val)
-          //清除图谱
-          d3.select('svg').selectAll('*').remove();
+        function btnWinQuest(val) {
+            //获取cypher
+            getCypher(val)
+            //清除图谱
+            d3.select('svg').selectAll('*').remove();
         }
 
         //获取图谱
-        function getfunqabotgrqph(val){
-          $.ajax({
-            //url: "http://localhost:7424/ongdb/gdaas/qabot/single/session/graph",
-            url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/graph",
-            type : "POST",
-            dataType: "JSON",
-            data: {
-                qa: val
-            },
-            success:function(result) {
-              //绘制关系图谱
-              drawGraph(result);
-            },
-			error:function(result) {
-			    alert(result);
-			}
-     	  });
+        function getfunqabotgrqph(val) {
+            $.ajax({
+                //url: "http://localhost:7424/ongdb/gdaas/qabot/single/session/graph",
+                url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/graph",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    qa: val
+                },
+                success: function (result) {
+                    //绘制关系图谱
+                    drawGraph(result);
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
         }
 
         //去重
         function unique(arr, type) {
             const res = new Map();
-           return arr.filter((a) => !res.has(a[type]) && res.set(a[type], 1));
+            return arr.filter((a) => !res.has(a[type]) && res.set(a[type], 1));
         }
 
-       //绘制图谱
-       function drawGraph(dataGraph){
-         d3.select('svg').selectAll('*').remove();
-         var nodeList = [];
-         var linkList = [];
-         $.each(dataGraph.results[0].data,function(index,item){
-           $.each(item.graph.nodes,function(index,item){
-               var jsonNode = {};
-               jsonNode.id = item.id;
-               jsonNode.name = item.properties.value.toString();
-               jsonNode.labels=item.labels[0];
-               nodeList.push(jsonNode);
-           })
-           $.each(item.graph.relationships,function(index,item){
-               var jsonLink = {};
-               jsonLink.src=item.startNode;
-               jsonLink.id=item.id;
-               jsonLink.type=item.type;
-               jsonLink.dst=item.endNode;
-               linkList.push(jsonLink);
-           })
-         })
+        //绘制图谱
+        function drawGraph(dataGraph) {
+            d3.select('svg').selectAll('*').remove();
+            var nodeList = [];
+            var linkList = [];
+            $.each(dataGraph.results[0].data, function (index, item) {
+                $.each(item.graph.nodes, function (index, item) {
+                    var jsonNode = {};
+                    jsonNode.id = item.id;
+                    jsonNode.name = item.properties.value.toString();
+                    jsonNode.labels = item.labels[0];
+                    nodeList.push(jsonNode);
+                })
+                $.each(item.graph.relationships, function (index, item) {
+                    var jsonLink = {};
+                    jsonLink.src = item.startNode;
+                    jsonLink.id = item.id;
+                    jsonLink.type = item.type;
+                    jsonLink.dst = item.endNode;
+                    linkList.push(jsonLink);
+                })
+            })
 
-         //去除重复节点
-         nodeList = unique(nodeList,"id");
+            //去除重复节点
+            nodeList = unique(nodeList, "id");
 
-         const data = {
-            nodes: nodeList,
-            links: linkList,
-        };
+            const data = {
+                nodes: nodeList,
+                links: linkList,
+            };
 
-        const { nodes, links } = data;
-        var divElmnt = document.getElementById("graphDiv");
-        const width = divElmnt.clientWidth;
-        const height = divElmnt.clientHeight;
-        formatLink(links, nodes);
-        formatNode(nodes);
+            const {nodes, links} = data;
+            var divElmnt = document.getElementById("graphDiv");
+            const width = divElmnt.clientWidth;
+            const height = divElmnt.clientHeight;
+            formatLink(links, nodes);
+            formatNode(nodes);
 
-        const simulation = d3
-            .forceSimulation(nodes)
-            .force("link", d3.forceLink(links).distance(200))
-            .force("charge", d3.forceManyBody().strength(-200).distanceMax(100))
-            .force("center", d3.forceCenter(width / 2, height / 2))
-            .on('tick', tick)
+            const simulation = d3
+                .forceSimulation(nodes)
+                .force("link", d3.forceLink(links).distance(200))
+                .force("charge", d3.forceManyBody().strength(-200).distanceMax(100))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .on('tick', tick)
 
-        // 创建一个根容器，用于存放要画的图形
-        const container = d3
-            .select("svg")
-            .append("g")
-            .attr("class", "container");
+            // 创建一个根容器，用于存放要画的图形
+            const container = d3
+                .select("svg")
+                .append("g")
+                .attr("class", "container");
 
-        // 绘制箭头
-        drawMarker();
-        // 绘制连接线
-        drawLinkPath(container, links);
-        // 绘制关系文本
-        drawRelationText(container, links);
+            // 绘制箭头
+            drawMarker();
+            // 绘制连接线
+            drawLinkPath(container, links);
+            // 绘制关系文本
+            drawRelationText(container, links);
 
-        // 圆圈和文字的外层g，可以在这个上面添加点击、hover事件
-        let nodeSelection = container
-            .append("g")
-            .attr("class", "nodegroup")
-            .selectAll(".node")
-            .data(nodes)
-            .enter()
-            .append('g')
-            .attr("id", d => { return d.idx });
+            // 圆圈和文字的外层g，可以在这个上面添加点击、hover事件
+            let nodeSelection = container
+                .append("g")
+                .attr("class", "nodegroup")
+                .selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr("id", d => {
+                    return d.idx
+                });
 
-        // 遍历绘制圆圈和圆圈上的文本
-        nodeSelection.each(d => {
-            drawCircle(d.idx)
-            drawText(d.idx);
-        })
+            // 遍历绘制圆圈和圆圈上的文本
+            nodeSelection.each(d => {
+                drawCircle(d.idx)
+                drawText(d.idx);
+            })
 
-        // ===== 拖拽 =====
-        const dragFunc = d3
-            .drag()
-            .on("start", dragStarted)
-            .on("drag", dragged)
-            .on("end", dragend);
+            // ===== 拖拽 =====
+            const dragFunc = d3
+                .drag()
+                .on("start", dragStarted)
+                .on("drag", dragged)
+                .on("end", dragend);
 
-        dragFunc(nodeSelection);
+            dragFunc(nodeSelection);
 
-       function dragStarted(d) {
-            if (!d3.event.active){
-              simulation.alphaTarget(0.01).restart();
-              d.fx = d.x;
-              d.fy = d.y;
+            function dragStarted(d) {
+                if (!d3.event.active) {
+                    simulation.alphaTarget(0.01).restart();
+                    d.fx = d.x;
+                    d.fy = d.y;
+                }
+
             }
 
-        }
-        function dragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-        function dragend(d) {
-            if (!d3.event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
-        }
-    }
+            function dragged(d) {
+                d.fx = d3.event.x;
+                d.fy = d3.event.y;
+            }
 
-    // ===== 绘图 =====
+            function dragend(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+
+        // ===== 绘图 =====
         function drawMarker() {
             d3.select('svg')
                 .append("svg:defs")
@@ -629,7 +657,7 @@
                     if (d.labels === '发行日期') {
                         return '#fe5557';
                     }
-                    if(d.labels === '基金产品'){
+                    if (d.labels === '基金产品') {
                         return '#2E8B57';
                     }
                     return '#52a3eb';
@@ -640,7 +668,7 @@
                 })
         }
 
-    function drawText(id) {
+        function drawText(id) {
             d3.select(`#${id}`)
                 .insert("text")
                 .attr('class', 'circle-text')
@@ -650,7 +678,9 @@
                 .style('fill', function (node) {
                     return '#fff';
                 })
-                .attr('y', d => { return d.x })
+                .attr('y', d => {
+                    return d.x
+                })
                 .attr('x', function (d) {
                     let re_en = /[a-zA-Z]+/g;
                     //如果是全英文，不换行
@@ -658,29 +688,39 @@
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 2)
-                            .text(function () { return d.name; });
+                            .text(function () {
+                                return d.name;
+                            });
                     }
                     //如果小于四个字符，不换行
                     else if (d.name.length <= 4) {
                         d3.select(this).append('tspan')
                             .attr('x', -2)
                             .attr('y', 2)
-                            .text(function () { return d.name; });
+                            .text(function () {
+                                return d.name;
+                            });
                     } else if (d.name.length > 4 && d.name.length <= 8) {//大于4  这两行
                         let top = d.name.substring(0, 4);
                         let bot = d.name.substring(4, d.name.length);
 
-                        d3.select(this).text(function () { return ''; });
+                        d3.select(this).text(function () {
+                            return '';
+                        });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -7)
-                            .text(function () { return top; });
+                            .text(function () {
+                                return top;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 10)
-                            .text(function () { return bot; });
+                            .text(function () {
+                                return bot;
+                            });
                     }
                     // 文字长度大于8 折三行
                     else if (d.name.length > 8 && d.name.length <= 12) {
@@ -688,22 +728,30 @@
                         let bot = d.name.substring(4, 8);
                         let bot1 = d.name.substring(8, d.name.length);
 
-                        d3.select(this).text(function () { return ''; });
+                        d3.select(this).text(function () {
+                            return '';
+                        });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -15)
-                            .text(function () { return top; });
+                            .text(function () {
+                                return top;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 2)
-                            .text(function () { return bot; });
+                            .text(function () {
+                                return bot;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 16)
-                            .text(function () { return bot1; });
+                            .text(function () {
+                                return bot1;
+                            });
 
                     }
                     //文字长度大于12 折四行
@@ -714,26 +762,36 @@
                         let bot1 = d.name.substring(8, 12);
                         let bot2 = d.name.substring(12, d.name.length);
 
-                        d3.select(this).text(function () { return ''; });
+                        d3.select(this).text(function () {
+                            return '';
+                        });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -20)
-                            .text(function () { return top; });
+                            .text(function () {
+                                return top;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -3)
-                            .text(function () { return bot; });
+                            .text(function () {
+                                return bot;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 10)
-                            .text(function () { return bot1; });
+                            .text(function () {
+                                return bot1;
+                            });
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 23)
-                            .text(function () { return bot2; });
+                            .text(function () {
+                                return bot2;
+                            });
 
 
                     } else if (d.name.length > 16) {//文字长度大于16  方案
@@ -743,26 +801,36 @@
                         let bot2 = d.name.substring(12, 14);
 
                         bot2 += '...'
-                        d3.select(this).text(function () { return ''; });
+                        d3.select(this).text(function () {
+                            return '';
+                        });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -22)
-                            .text(function () { return top; });
+                            .text(function () {
+                                return top;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', -7)
-                            .text(function () { return bot; });
+                            .text(function () {
+                                return bot;
+                            });
 
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 10)
-                            .text(function () { return bot1; });
+                            .text(function () {
+                                return bot1;
+                            });
                         d3.select(this).append('tspan')
                             .attr('x', 0)
                             .attr('y', 25)
-                            .text(function () { return bot2; });
+                            .text(function () {
+                                return bot2;
+                            });
                     }
                 })
         }
@@ -812,7 +880,7 @@
 
             edges_text.insert('rect', 'text')
                 .attr('width', function (d, i, e) {
-                    const { width } = e[i].parentNode.getBoundingClientRect()
+                    const {width} = e[i].parentNode.getBoundingClientRect()
                     return width;
                 })
                 .attr('height', function (d) {
@@ -820,35 +888,36 @@
                 })
                 .attr("y", "-.5em")
                 .attr('x', function (d, i, e) {
-                    const { width } = e[i].nextSibling.getBoundingClientRect()
+                    const {width} = e[i].nextSibling.getBoundingClientRect()
                     return -width / 2;
                 })
                 .attr('fill', 'rgba(255,255,255,.5)');
 
-             // ===== 缩放 =====
-        initZoom();
-        function initZoom() {
-            const zoom = d3
-                .zoom()
-                .scaleExtent([0.2, 5])
-                .on("zoom", () => {
-                    let transform = d3.event.transform;
-                    return container.attr(
-                        "transform",
-                        `translate(${transform.x},${transform.y})scale(${transform.k})`
-                    );
-                });
+            // ===== 缩放 =====
+            initZoom();
 
-            //动画持续时间
-            container
-                .transition()
-                .duration(300)
-                .call(zoom.transform, d3.zoomIdentity);
-            d3.select("svg")
-                .call(zoom)
-                // 取消默认的双击放大事件
-                .on("dblclick.zoom", null);
-          }
+            function initZoom() {
+                const zoom = d3
+                    .zoom()
+                    .scaleExtent([0.2, 5])
+                    .on("zoom", () => {
+                        let transform = d3.event.transform;
+                        return container.attr(
+                            "transform",
+                            `translate(${transform.x},${transform.y})scale(${transform.k})`
+                        );
+                    });
+
+                //动画持续时间
+                container
+                    .transition()
+                    .duration(300)
+                    .call(zoom.transform, d3.zoomIdentity);
+                d3.select("svg")
+                    .call(zoom)
+                    // 取消默认的双击放大事件
+                    .on("dblclick.zoom", null);
+            }
         }
 
         function formatNode(nodes) {
@@ -867,6 +936,7 @@
                 link["target"] = dst;
             });
         }
+
         function uuid() {
             return Math.random().toString(34).replaceAll(/\,|\./g, '')
         }
@@ -877,6 +947,7 @@
             updateCircleAndText();
             updateLinkRelationText();
         }
+
         function updateCircleAndText() {
             d3.selectAll("circle")
                 .attr("cx", (d) => {
@@ -887,12 +958,14 @@
                 return `translate(${d.x},${d.y})`;
             });
         }
+
         function updateLinkLine() {
             const edges_line = d3.selectAll(".path");
             edges_line.attr("d", function (d) {
                 return "M" + d.source.x + " " + d.source.y + " L " + d.target.x + " " + d.target.y
             });
         }
+
         function updateLinkRelationText() {
             const svg = d3.select("svg");
             let edges_text = svg.selectAll(".linetext");
@@ -906,26 +979,26 @@
         }
 
         //切换回答问题方式
-        function answerType(){
-           if($('#btnGraph').text()==='>>'){
-             $('#answerId').val(1);
-             $('#chatDptDiv').show();
-             $('#div0').css("width","2450px");
-             $('#btnGraph').text('<<');
-           }else{
-             $('#answerId').val(0);
-             $('#chatDptDiv').hide();
-             $('#div0').css("width","1800px");
-             $('#btnGraph').text('>>');
-           }
+        function answerType() {
+            if ($('#btnGraph').text() === '>>') {
+                $('#answerId').val(1);
+                $('#chatDptDiv').show();
+                $('#div0').css("width", "2450px");
+                $('#btnGraph').text('<<');
+            } else {
+                $('#answerId').val(0);
+                $('#chatDptDiv').hide();
+                $('#div0').css("width", "1800px");
+                $('#btnGraph').text('>>');
+            }
         }
 
         //关闭chatGpt聊天窗口
-        function answerChat(){
-          $('#answerId').val(0);
-          $('#chatDptDiv').hide();
-          $('#div0').css("width","1800px");
-          $('#btnGraph').text('>>');
+        function answerChat() {
+            $('#answerId').val(0);
+            $('#chatDptDiv').hide();
+            $('#div0').css("width", "1800px");
+            $('#btnGraph').text('>>');
         }
 
     </script>
@@ -981,6 +1054,17 @@
              width="800px"></svg>
     </div>
     <button type="button" onclick="answerType()" id="btnGraph" class="btnChat">>></button>
+
+    <div id="divgb" class="graph-database-http" style="display: grid;">
+        <input id="cql-http-text-input" maxlength="20" placeholder="http,https://ip:port"
+               class="text-input">
+        <input
+            id="cql-http-text-input-un" type="tel" maxlength="20" placeholder="username" class="text-input">
+        <input
+            id="cql-http-text-input-pw" type="password" maxlength="20" placeholder="password" class="text-input">
+        <button class="http-url-commit-btn">connect ongdb</button>
+    </div>
+
 </div>
 </body>
 </html>
