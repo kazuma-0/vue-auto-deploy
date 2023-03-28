@@ -329,7 +329,7 @@
                 }})
         }
 
-        //智能客服问题列表
+        //DEMO2问题列表
         function getQaList(){
           $.ajax({
             //url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_qa",
@@ -348,7 +348,7 @@
           })
         }
 
-        //智能投研问题列表
+        //DEMO1问题列表
         function getResearch(){
           $.ajax({
             // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_research",
@@ -367,7 +367,7 @@
           })
         }
 
-        //基金运营问题列表
+        //DEMO3问题列表
         function getBusiness(){
           $.ajax({
             // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_business",
@@ -386,7 +386,7 @@
           })
         }
 
-        //固收数据问题列表
+        //DEMO4问题列表
         function getFixed(){
           $.ajax({
             // url: "http://localhost:7424/ongdb/gdaas/qabot/single/demo_fixed",
@@ -937,10 +937,10 @@
     <div class="div2">
         <div id="divNavigation">
             <ul id="ulNavigation" class="navigationStyle">
-                <li onclick="getResearch()">智能投研</li>
-                <li onclick="getQaList()">智能客服</li>
-                <li onclick="getBusiness()">基金运营</li>
-                <li onclick="getFixed()">固收数据</li>
+                <li style="color: peru" onclick="getResearch()">DEMO1</li>
+                <li style="color: peru" onclick="getQaList()">DEMO2</li>
+                <li style="color: peru" onclick="getBusiness()">DEMO3</li>
+                <li style="color: peru" onclick="getFixed()">DEMO4</li>
             </ul>
         </div>
         <div style="margin-top: 70px">
