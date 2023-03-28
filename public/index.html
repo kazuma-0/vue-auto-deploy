@@ -6,6 +6,7 @@
     <title>Graph QABot</title>
     <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>
     <script src="<%= BASE_URL %>js/d3.v5.min.js"></script>
+    <script src="<%= BASE_URL %>js/qabot.js"></script>
     <style type="text/css">
         .div0 {
             width: 1800px;
@@ -1062,7 +1063,7 @@
             id="cql-http-text-input-un" type="tel" maxlength="20" placeholder="username" class="text-input">
         <input
             id="cql-http-text-input-pw" type="password" maxlength="20" placeholder="password" class="text-input">
-        <button class="http-url-commit-btn">connect ongdb</button>
+        <button class="http-url-commit-btn" onclick="updateStorage()">connect ongdb</button>
     </div>
 
 </div>
