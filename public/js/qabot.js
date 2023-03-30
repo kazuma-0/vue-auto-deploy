@@ -8,7 +8,7 @@ const passwordKey = 'qabot.ongdb.password'
 const passwordValue = '123456'
 
 let driver = neo4j.driver(
-    'bolt://'+localStorage.getItem(urlKey),
+    'bolt://' + localStorage.getItem(urlKey),
     neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
 )
 
@@ -17,20 +17,20 @@ function updateStorage() {
     let httpUrl = document.getElementById('cql-http-text-input').value;
     let username = document.getElementById('cql-http-text-input-un').value;
     let password = document.getElementById('cql-http-text-input-pw').value;
-    if (isNull(httpUrl)){
+    if (isNull(httpUrl)) {
         httpUrl = urlValue
     }
-    if (isNull(usernameValue)){
+    if (isNull(usernameValue)) {
         username = usernameValue
     }
-    if (isNull(passwordValue)){
+    if (isNull(passwordValue)) {
         password = passwordValue
     }
     localStorage.setItem(urlKey, httpUrl);
     localStorage.setItem(usernameKey, username);
     localStorage.setItem(passwordKey, password);
     driver = neo4j.driver(
-        'bolt://'+localStorage.getItem(urlKey),
+        'bolt://' + localStorage.getItem(urlKey),
         neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
     )
     console.log(driver)
@@ -41,7 +41,7 @@ function isNull(nmaGrad3phValue) {
 }
 
 //设置默认连接
-function setStorage(){
+function setStorage() {
     const httpUrl = localStorage.getItem(urlKey);
     const username = localStorage.getItem(usernameKey);
     const password = localStorage.getItem(passwordKey);
@@ -50,7 +50,7 @@ function setStorage(){
     document.querySelector('#cql-http-text-input-pw').value = password;
 }
 
-function getUrl(){
+function getUrl() {
     return localStorage.getItem(urlKey).trim().toString() + '/db/data/transaction/commit';
 }
 
@@ -96,19 +96,18 @@ $(function () {
 function getDemoQALabel() {
     var session = driver.session()
     driver.session()
-        .run('MATCH (n:DEMO_QA) RETURN DISTINCT n.label AS label LIMIT 10;', {
-        })
-        .then(function(result) {
+        .run('MATCH (n:DEMO_QA) RETURN DISTINCT n.label AS label LIMIT 10;', {})
+        .then(function (result) {
             var ulNavigation = document.getElementById('ulNavigation');
             let htmlLabels = '';
-            result.records.forEach(function(record) {
+            result.records.forEach(function (record) {
                 const qaLabel = record.get('label')
-                htmlLabels += "<li onclick=getQaListByLabel('" + qaLabel + "')>"+qaLabel+"</li>";
+                htmlLabels += "<li onclick=getQaListByLabel('" + qaLabel + "')>" + qaLabel + "</li>";
             })
             ulNavigation.innerHTML = htmlLabels
             session.close()
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error)
         })
 }
@@ -116,17 +115,16 @@ function getDemoQALabel() {
 function getQaListByLabel(label) {
     var session = driver.session()
     driver.session()
-        .run('MATCH (n:DEMO_QA) WHERE n.label=\''+label+'\' RETURN n.qa AS qa LIMIT 100;', {
-        })
-        .then(function(result) {
+        .run('MATCH (n:DEMO_QA) WHERE n.label=\'' + label + '\' RETURN n.qa AS qa LIMIT 100;', {})
+        .then(function (result) {
             $('#ul1').html('');
-            result.records.forEach(function(record) {
+            result.records.forEach(function (record) {
                 item = record.get('qa')
                 $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
             session.close()
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error)
         })
 }
@@ -134,79 +132,84 @@ function getQaListByLabel(label) {
 function loadSampleQA() {
     var session = driver.session()
     driver.session()
-        .run('MATCH (n:DEMO_QA) RETURN n.qa AS qa LIMIT 100;', {
-        })
-        .then(function(result) {
+        .run('MATCH (n:DEMO_QA) RETURN n.qa AS qa LIMIT 100;', {})
+        .then(function (result) {
             $('#ul1').html('');
-            result.records.forEach(function(record) {
+            result.records.forEach(function (record) {
                 item = record.get('qa')
                 $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
             })
             session.close()
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error)
         })
 }
 
 //获取推荐问题
 function getRecommend(val) {
-    $.ajax({
-        url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/recommend',
-        type: "POST",
-        dataType: "JSON",
-        data: {
-            question: val
-        },
-        success: function (result) {
+    var session = driver.session()
+    driver.session()
+        .run('CALL custom.qabot.fund_customer.recommend_list(\'' + val + '\') YIELD raw_query,re_query,score RETURN raw_query,re_query,score;', {})
+        .then(function (result) {
             var txt = '';
-            $.each(result.list, function (index, value) {
-                txt += value + '\n';
+            result.records.forEach(function (record) {
+                item = record.get('re_query')
+                txt += item + '\n';
             })
             $('#input_area').val(txt);
-        },
-        error: function (result) {
-            alert(result);
-        }
-    });
+            session.close()
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
 
 //调graph接口回答问题
 function getfunqabot(val) {
-    $.ajax({
-        url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session',
-        type: "POST",
-        dataType: "JSON",
-        data: {
-            qa: val
-        },
-        success: function (result) {
-            var showTxt = "【问题】：" + val;
-            showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
-            showTxt += result.data;
-            var showdiv = document.getElementById('show_div');
-            if (result.type === 'kg_chat') {
+    var session = driver.session()
+    driver.session()
+        .run('CALL custom.qabot.fund_customer_qabot(\'' + val + '\') YIELD result RETURN result;', {})
+        .then(function (result) {
+            var txt = '';
+            result.records.forEach(function (record) {
+                item = record.get('result')
+                txt += item + '<br />'
+            })
+            if (txt !== '') {
+                var showTxt = "【问题】：" + val;
+                showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
+                showTxt += txt;
+                var showdiv = document.getElementById('show_div');
                 //查询并绘制关系图谱
                 getfunqabotgrqph(val);
                 showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_letf_item_GPT'>QABot</div><div class='chat_left_content'>" + showTxt + "</div></div>";
+
+                showdiv.scrollTop = showdiv.scrollHeight;
+                //获取cypher
+                getCypher(val);
             } else {
-                d3.select('svg').selectAll('*').remove();
-                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' btnWinQuest('" + val + "')><div class='chat_letf_item_GPT'>QABot</div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                var showTxt = "【问题】：" + val;
+                showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
+                showTxt += "机器人有点繁忙，请稍后再试！";
+                var showdiv = document.getElementById('show_div');
+                //查询并绘制关系图谱
+                getfunqabotgrqph(val);
+                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_letf_item_GPT'>QABot</div><div class='chat_left_content'>" + showTxt + "</div></div>";
+
+                showdiv.scrollTop = showdiv.scrollHeight;
             }
-            showdiv.scrollTop = showdiv.scrollHeight;
-            //获取cypher
-            getCypher(val);
-        },
-        error: function (result) {
-            alert(result);
-        }
-    });
+            session.close()
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
 
 //调chatGpt接口回答问题
 function getChatGPTfunqabot(val) {
     $.ajax({
-        url: 'http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/chatGpt',
+        url: 'http://openai:8080/qabot/single/session/chatGpt',
         type: "POST",
         dataType: "JSON",
         data: {
@@ -221,24 +224,32 @@ function getChatGPTfunqabot(val) {
             showdiv.scrollTop = showdiv.scrollHeight;
         },
         error: function (result) {
-            alert(result);
+            var showTxt = "【问题】：" + val;
+            showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
+            showTxt += 'ChatGPT服务繁忙，请稍后再试！';
+            var showdiv = document.getElementById('chat_div');
+            showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;'><div class='chat_letf_item_GPT'>ChatGPT</div><div class='chat_left_content'>" + showTxt + "</div></div>";
+            showdiv.scrollTop = showdiv.scrollHeight;
         }
     });
 }
 
 //查询cypher
 function getCypher(val) {
-    $.ajax({
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/cypher",
-        type: "POST",
-        dataType: "JSON",
-        data: {
-            qa: val
-        },
-        success: function (result) {
-            $('#code1').html(result.cypher);
-        }
-    })
+    var session = driver.session()
+    driver.session()
+        .run('CALL custom.qabot.fund_customer_qabot.cypher(\'' + val + '\') YIELD cypher RETURN cypher;', {})
+        .then(function (result) {
+            var txt = '';
+            result.records.forEach(function (record) {
+                item = record.get('cypher')
+                $('#code1').html(item);
+            })
+            session.close()
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
 
 //点击左边列表提问
@@ -309,24 +320,61 @@ function btnWinQuest(val) {
     d3.select('svg').selectAll('*').remove();
 }
 
+function packNode(node) {
+    var jsonNode = {};
+    jsonNode.id = node.elementId;
+
+    if (node.properties.value !== '' && node.properties.value !== undefined) {
+        jsonNode.name = node.properties.value.toString();
+    } else if (node.properties.name !== '' && node.properties.name !== undefined) {
+        jsonNode.name = node.properties.name.toString();
+    } else {
+        const map = new Map(Object.entries(node.properties))
+        let txt = '';
+        map.forEach(function (value, key) {
+            txt += key + ':' + value + ' ';
+        })
+        jsonNode.name = txt;
+    }
+    jsonNode.labels = node.labels[0];
+    return jsonNode;
+}
+
+function packRel(rel) {
+    var jsonLink = {};
+    jsonLink.src = rel.startNodeElementId;
+    jsonLink.id = rel.elementId;
+    jsonLink.type = rel.type;
+    jsonLink.dst = rel.endNodeElementId;
+    return jsonLink;
+}
+
 //获取图谱
 function getfunqabotgrqph(val) {
-    $.ajax({
-        //url: "http://localhost:7424/ongdb/gdaas/qabot/single/session/graph",
-        url: "http://graph.jsfund.cn/ongdb/gdaas/qabot/single/session/graph",
-        type: "POST",
-        dataType: "JSON",
-        data: {
-            qa: val
-        },
-        success: function (result) {
-            //绘制关系图谱
-            drawGraph(result);
-        },
-        error: function (result) {
-            alert(result);
-        }
-    });
+    var session = driver.session()
+    driver.session()
+        .run('CALL custom.qabot.fund_customer_qabot.graph(\''+val+'\') YIELD path RETURN path;', {})
+        // .run('match path=()-[*2..3]-() RETURN path limit 10;', {})
+        .then(function (result) {
+            var nodeList = [];
+            var linkList = [];
+            result.records.forEach(function (record) {
+                path = record.get('path')
+                nodeList.push(packNode(path.start));
+                nodeList.push(packNode(path.end));
+                path.segments.forEach(function (p) {
+                    nodeList.push(packNode(p.start));
+                    nodeList.push(packNode(p.end));
+                    linkList.push(packRel(p.relationship));
+                })
+
+            })
+            drawGraph(nodeList, linkList);
+            session.close()
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
 
 //去重
@@ -336,27 +384,8 @@ function unique(arr, type) {
 }
 
 //绘制图谱
-function drawGraph(dataGraph) {
+function drawGraph(nodeList, linkList) {
     d3.select('svg').selectAll('*').remove();
-    var nodeList = [];
-    var linkList = [];
-    $.each(dataGraph.results[0].data, function (index, item) {
-        $.each(item.graph.nodes, function (index, item) {
-            var jsonNode = {};
-            jsonNode.id = item.id;
-            jsonNode.name = item.properties.value.toString();
-            jsonNode.labels = item.labels[0];
-            nodeList.push(jsonNode);
-        })
-        $.each(item.graph.relationships, function (index, item) {
-            var jsonLink = {};
-            jsonLink.src = item.startNode;
-            jsonLink.id = item.id;
-            jsonLink.type = item.type;
-            jsonLink.dst = item.endNode;
-            linkList.push(jsonLink);
-        })
-    })
 
     //去除重复节点
     nodeList = unique(nodeList, "id");
@@ -488,7 +517,7 @@ function drawText(id) {
         .attr("text-anchor", "middle")
         .attr('font-size', 12)
         .style('fill', function (node) {
-            return '#fff';
+            return '#cecccc';
         })
         .attr('y', d => {
             return d.x
