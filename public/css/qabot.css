@@ -203,9 +203,13 @@
     list-style-type: none;
     margin-left: 5px;
     font-weight: bold;
+    color: peru;
 }
 
 .navigationStyle li:hover {
-    color: blue;
+    color: #824203;
 }
 
+.div2 div {
+    display: flex;
+}

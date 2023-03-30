@@ -55,8 +55,11 @@ function getUrl(){
 }
 
 $(function () {
-    //获取左边问题列表
-    getQaList();
+    //获取问题标签列表
+    getDemoQALabel();
+
+    //默认加载的样例问题
+    loadSampleQA();
 
     //从graph输入框提问
     $("#btn1").click(function () {
@@ -90,6 +93,62 @@ $(function () {
     })
 })
 
+function getDemoQALabel() {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO_QA) RETURN DISTINCT n.label AS label LIMIT 10;', {
+        })
+        .then(function(result) {
+            var ulNavigation = document.getElementById('ulNavigation');
+            let htmlLabels = '';
+            result.records.forEach(function(record) {
+                const qaLabel = record.get('label')
+                htmlLabels += "<li onclick=getQaListByLabel('" + qaLabel + "')>"+qaLabel+"</li>";
+            })
+            ulNavigation.innerHTML = htmlLabels
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
+}
+
+function getQaListByLabel(label) {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO_QA) WHERE n.label=\''+label+'\' RETURN n.qa AS qa LIMIT 100;', {
+        })
+        .then(function(result) {
+            $('#ul1').html('');
+            result.records.forEach(function(record) {
+                item = record.get('qa')
+                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+            })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
+}
+
+function loadSampleQA() {
+    var session = driver.session()
+    driver.session()
+        .run('MATCH (n:DEMO_QA) RETURN n.qa AS qa LIMIT 100;', {
+        })
+        .then(function(result) {
+            $('#ul1').html('');
+            result.records.forEach(function(record) {
+                item = record.get('qa')
+                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
+            })
+            session.close()
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
+}
+
 //获取推荐问题
 function getRecommend(val) {
     $.ajax({
@@ -100,7 +159,6 @@ function getRecommend(val) {
             question: val
         },
         success: function (result) {
-            console.log(result);
             var txt = '';
             $.each(result.list, function (index, value) {
                 txt += value + '\n';
@@ -130,10 +188,10 @@ function getfunqabot(val) {
             if (result.type === 'kg_chat') {
                 //查询并绘制关系图谱
                 getfunqabotgrqph(val);
-                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_left_item_1'><img src='<%= BASE_URL %>image/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuestgraph('" + val + "')><div class='chat_letf_item_GPT'>QABot</div><div class='chat_left_content'>" + showTxt + "</div></div>";
             } else {
                 d3.select('svg').selectAll('*').remove();
-                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' onclick=btnWinQuest('" + val + "')><div class='chat_left_item_1'><img src='<%= BASE_URL %>image/chatai.png'/></div><div class='chat_left_content'>" + showTxt + "</div></div>";
+                showdiv.innerHTML = showdiv.innerHTML + "<div style='float: left; display: flex; margin-top: 20px; width: 550px;' btnWinQuest('" + val + "')><div class='chat_letf_item_GPT'>QABot</div><div class='chat_left_content'>" + showTxt + "</div></div>";
             }
             showdiv.scrollTop = showdiv.scrollHeight;
             //获取cypher
@@ -155,7 +213,6 @@ function getChatGPTfunqabot(val) {
             qa: val
         },
         success: function (result) {
-            console.log(result);
             var showTxt = "【问题】：" + val;
             showTxt += "<hr style='width: 200px; margin-left: 10px;'/>"
             showTxt += result.data;
@@ -182,82 +239,6 @@ function getCypher(val) {
             $('#code1').html(result.cypher);
         }
     })
-}
-
-//DEMO2问题列表
-function getQaList() {
-    var session = driver.session()
-    driver.session()
-        .run('MATCH (n:DEMO2) RETURN n.name AS name LIMIT 100;', {
-        })
-        .then(function(result) {
-            $('#ul1').html('');
-            result.records.forEach(function(record) {
-                item = record.get('name')
-                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
-            })
-            session.close()
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
-}
-
-//DEMO1问题列表
-function getResearch() {
-    var session = driver.session()
-    driver.session()
-        .run('MATCH (n:DEMO1) RETURN n.name AS name LIMIT 100;', {
-        })
-        .then(function(result) {
-            $('#ul1').html('');
-            result.records.forEach(function(record) {
-                item = record.get('name')
-                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
-            })
-            session.close()
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
-}
-
-//DEMO3问题列表
-function getBusiness() {
-    var session = driver.session()
-    driver.session()
-        .run('MATCH (n:DEMO3) RETURN n.name AS name LIMIT 100;', {
-        })
-        .then(function(result) {
-            $('#ul1').html('');
-            result.records.forEach(function(record) {
-                item = record.get('name')
-                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
-            })
-            session.close()
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
-}
-
-//DEMO4问题列表
-function getFixed() {
-    var session = driver.session()
-    driver.session()
-        .run('MATCH (n:DEMO4) RETURN n.name AS name LIMIT 100;', {
-        })
-        .then(function(result) {
-            $('#ul1').html('');
-            result.records.forEach(function(record) {
-                item = record.get('name')
-                $('#ul1').append("<li onclick=liClick('" + item + "')>" + item + "</li>")
-            })
-            session.close()
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
 }
 
 //点击左边列表提问

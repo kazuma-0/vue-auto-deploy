@@ -5,22 +5,22 @@
     <script src="https://cdn.jsdelivr.net/npm/neo4j-driver"></script>
 
     <!-- Github Pages访问时配置-->
-    <link rel="icon" type="image/png" href="<%= BASE_URL %>image/chatai.png"/>
-    <meta charset="UTF-8">
-    <title>Graph QABot</title>
-    <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>
-    <script src="<%= BASE_URL %>js/d3.v5.min.js"></script>
-    <script src="<%= BASE_URL %>js/qabot.js"></script>
-    <link type="text/css" rel="stylesheet" href="<%= BASE_URL %>css/qabot.css"/>
-
-    <!-- 本地访问时配置-->
-<!--    <link rel="icon" type="image/png" href="image/chatai.png"/>-->
+<!--    <link rel="icon" type="image/png" href="<%= BASE_URL %>image/chatai.png"/>-->
 <!--    <meta charset="UTF-8">-->
 <!--    <title>Graph QABot</title>-->
-<!--    <script src="js/jquery-3.2.1.min.js"></script>-->
-<!--    <script src="js/d3.v5.min.js"></script>-->
-<!--    <script src="js/qabot.js"></script>-->
-<!--    <link type="text/css" rel="stylesheet" href="css/qabot.css"/>-->
+<!--    <script src="<%= BASE_URL %>js/jquery-3.2.1.min.js"></script>-->
+<!--    <script src="<%= BASE_URL %>js/d3.v5.min.js"></script>-->
+<!--    <script src="<%= BASE_URL %>js/qabot.js"></script>-->
+<!--    <link type="text/css" rel="stylesheet" href="<%= BASE_URL %>css/qabot.css"/>-->
+
+    <!-- 本地访问时配置-->
+    <link rel="icon" type="image/png" href="image/chatai.png"/>
+    <meta charset="UTF-8">
+    <title>Graph QABot</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/d3.v5.min.js"></script>
+    <script src="js/qabot.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/qabot.css"/>
 
 </head>
 <body>
@@ -29,14 +29,9 @@
 <div id="div0" class="div0">
     <div class="div2">
         <div id="divNavigation">
-            <ul id="ulNavigation" class="navigationStyle">
-                <li style="color: peru" onclick="getResearch()">DEMO1</li>
-                <li style="color: peru" onclick="getQaList()">DEMO2</li>
-                <li style="color: peru" onclick="getBusiness()">DEMO3</li>
-                <li style="color: peru" onclick="getFixed()">DEMO4</li>
-            </ul>
+            <ul id="ulNavigation" class="navigationStyle"></ul>
         </div>
-        <div style="margin-top: 70px">
+        <div style="margin-top: -20px">
             <ul id="ul1" class="ulstyle">
             </ul>
         </div>
