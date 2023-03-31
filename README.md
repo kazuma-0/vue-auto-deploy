@@ -10,10 +10,10 @@ Graph QABot Pages.
 
 ## Graph QABot工具使用方法
 1. 本地使用
->从https://github.com/ongdb-contrib/graph-qabot/tree/master/public地址，完整下载public文件夹，然后点击public文件夹下的index.html文件即可访问。
+>从[https://github.com/ongdb-contrib/graph-qabot/tree/master/public](https://github.com/ongdb-contrib/graph-qabot/tree/master/public)地址，完整下载public文件夹，然后点击public文件夹下的index.html文件即可访问。
 
 2. 在线使用
->在线访问https://ongdb-contrib.github.io/graph-qabot/地址。
+>在线访问[https://ongdb-contrib.github.io/graph-qabot/](https://ongdb-contrib.github.io/graph-qabot/)地址。
 
 ## 样例问题设置方法
 - 设置样例问题，保存标签为`DEMO_QA`的节点，设置属性为label和qa
