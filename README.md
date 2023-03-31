@@ -8,6 +8,13 @@ Graph QABot Pages.
 >根据案例指南安装图数据库和对应组件，并构建图数据，配置问答工具后即可运行问答系统。
 [graph-qabot-demo](https://github.com/ongdb-contrib/graph-qabot-demo)
 
+## Graph QABot工具使用方法
+1. 本地使用
+>从https://github.com/ongdb-contrib/graph-qabot/tree/master/public地址，完整下载public文件夹，然后点击public文件夹下的index.html文件即可访问。
+
+2. 在线使用
+>在线访问https://ongdb-contrib.github.io/graph-qabot/地址。
+
 ## 样例问题设置方法
 - 设置样例问题，保存标签为`DEMO_QA`的节点，设置属性为label和qa
 ```cypher
@@ -40,16 +47,16 @@ CALL custom.qabot.graph('{qa}') YIELD path RETURN path;
 ```
 
 ## 问答系统依赖的组件
-- 图数据库ONgDB-1.x
+- 图数据库ONgDB-1.x：
 [图数据库：ONgDB](https://github.com/graphfoundation/ongdb)
 
-- OLAB组件1.x
+- OLAB组件1.x：
 [ONgDB组件：ongdb-lab-apoc](https://github.com/ongdb-contrib/ongdb-lab-apoc)
 
-- ONgDB-APOC组件3.4.x
+- ONgDB-APOC组件3.4.x：
 [ongdb-apoc](https://github.com/graphfoundation/ongdb-apoc)
 
-- 建模工具
+- 建模工具：
 [Graphene图数据建模工具](https://github.com/ongdb-contrib/graphene)
 
 ## 效果展示
