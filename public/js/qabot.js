@@ -7,9 +7,9 @@ const usernameValue = 'ongdb'
 const passwordKey = 'qabot.ongdb.password'
 const passwordValue = '123456'
 
-let driver = neo4j.driver(
+let driver = neo4j.v1.driver(
     'bolt://' + localStorage.getItem(urlKey),
-    neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
+    neo4j.v1.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
 )
 
 //更新缓存
@@ -29,9 +29,9 @@ function updateStorage() {
     localStorage.setItem(urlKey, httpUrl);
     localStorage.setItem(usernameKey, username);
     localStorage.setItem(passwordKey, password);
-    driver = neo4j.driver(
+    driver = neo4j.v1.driver(
         'bolt://' + localStorage.getItem(urlKey),
-        neo4j.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
+        neo4j.v1.auth.basic(localStorage.getItem(usernameKey), localStorage.getItem(passwordKey))
     )
     console.log(driver)
 }

@@ -36,9 +36,14 @@ CALL custom.qabot.graph('{qa}') YIELD path RETURN path;
 ```
 
 ## 依赖组件
+- 图数据库ONgDB-1.x
 [图数据库：ONgDB](https://github.com/graphfoundation/ongdb)
 
+- OLAB组件1.x
 [ONgDB组件：ongdb-lab-apoc](https://github.com/ongdb-contrib/ongdb-lab-apoc)
+
+- ONgDB-APOC组件3.4.x
+[ongdb-apoc](https://github.com/graphfoundation/ongdb-apoc)
 
 ## 效果展示
 
