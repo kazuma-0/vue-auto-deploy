@@ -150,7 +150,7 @@ function loadSampleQA() {
 function getRecommend(val) {
     var session = driver.session()
     driver.session()
-        .run('CALL custom.qabot.fund_customer.recommend_list(\'' + val + '\') YIELD raw_query,re_query,score RETURN raw_query,re_query,score;', {})
+        .run('CALL custom.qabot.recommend_list(\'' + val + '\') YIELD raw_query,re_query,score RETURN raw_query,re_query,score;', {})
         .then(function (result) {
             var txt = '';
             result.records.forEach(function (record) {
@@ -169,7 +169,7 @@ function getRecommend(val) {
 function getfunqabot(val) {
     var session = driver.session()
     driver.session()
-        .run('CALL custom.qabot.fund_customer_qabot(\'' + val + '\') YIELD result RETURN result;', {})
+        .run('CALL custom.qabot(\'' + val + '\') YIELD result RETURN result;', {})
         .then(function (result) {
             var txt = '';
             result.records.forEach(function (record) {
@@ -238,7 +238,7 @@ function getChatGPTfunqabot(val) {
 function getCypher(val) {
     var session = driver.session()
     driver.session()
-        .run('CALL custom.qabot.fund_customer_qabot.cypher(\'' + val + '\') YIELD cypher RETURN cypher;', {})
+        .run('CALL custom.qabot.cypher(\'' + val + '\') YIELD cypher RETURN cypher;', {})
         .then(function (result) {
             var txt = '';
             result.records.forEach(function (record) {
@@ -353,8 +353,7 @@ function packRel(rel) {
 function getfunqabotgrqph(val) {
     var session = driver.session()
     driver.session()
-        .run('CALL custom.qabot.fund_customer_qabot.graph(\''+val+'\') YIELD path RETURN path;', {})
-        // .run('match path=()-[*2..3]-() RETURN path limit 10;', {})
+        .run('CALL custom.qabot.graph(\''+val+'\') YIELD path RETURN path;', {})
         .then(function (result) {
             var nodeList = [];
             var linkList = [];
