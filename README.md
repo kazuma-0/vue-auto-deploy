@@ -61,4 +61,4 @@ CALL custom.qabot.graph('{qa}') YIELD path RETURN path;
 
 ## 效果展示
 
-
+![QABot](images/QABot.png)
