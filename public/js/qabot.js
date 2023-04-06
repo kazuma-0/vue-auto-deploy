@@ -320,9 +320,16 @@ function btnWinQuest(val) {
     d3.select('svg').selectAll('*').remove();
 }
 
+function getNodeId(node) {
+    if (node.elementId !== undefined){
+        return node.elementId;
+    }
+    return node.identity.low;
+}
+
 function packNode(node) {
     var jsonNode = {};
-    jsonNode.id = node.elementId;
+    jsonNode.id = getNodeId(node);
 
     if (node.properties.value !== '' && node.properties.value !== undefined) {
         jsonNode.name = node.properties.value.toString();
@@ -340,12 +347,33 @@ function packNode(node) {
     return jsonNode;
 }
 
+function getRelId(rel) {
+    if (rel.elementId !== undefined){
+        return rel.elementId;
+    }
+    return rel.identity.low;
+}
+
+function getRelStartId(rel) {
+    if (rel.startNodeElementId !== undefined){
+        return rel.startNodeElementId;
+    }
+    return rel.start.low;
+}
+
+function getRelNodeId(rel) {
+    if (rel.endNodeElementId !== undefined){
+        return rel.endNodeElementId;
+    }
+    return rel.end.low;
+}
+
 function packRel(rel) {
     var jsonLink = {};
-    jsonLink.src = rel.startNodeElementId;
-    jsonLink.id = rel.elementId;
+    jsonLink.src = getRelStartId(rel);
+    jsonLink.id = getRelId(rel);
     jsonLink.type = rel.type;
-    jsonLink.dst = rel.endNodeElementId;
+    jsonLink.dst = getRelNodeId(rel);
     return jsonLink;
 }
 
